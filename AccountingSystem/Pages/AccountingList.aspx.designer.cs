@@ -11,7 +11,7 @@ namespace AccountingSystem.Pages
 {
 
 
-    public partial class Login
+    public partial class AccountingList
     {
     }
 }

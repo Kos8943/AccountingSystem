@@ -102,26 +102,41 @@
     <Content Include="Jquery\jquery-3.6.0.min.js" />
     <Content Include="js\datatables-simple-demo.js" />
     <Content Include="js\scripts.js" />
+    <Content Include="Pages\AccountingList.aspx" />
     <Content Include="Pages\Index.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBConnect\AccountManager.cs" />
     <Compile Include="DBConnect\IndexDBMethod.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DBHelper.cs" />
+    <Compile Include="Helpers\LoginHelper.cs" />
     <Compile Include="HttpHandlers\IndexHandler.ashx.cs">
       <DependentUpon>IndexHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="HttpHandlers\LoginHandler.ashx.cs">
+      <DependentUpon>LoginHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Models\IndexModel.cs" />
+    <Compile Include="Models\LoginInfoModel.cs" />
+    <Compile Include="Models\UserListModel.cs" />
     <Compile Include="NavbarAndSidebar.Master.cs">
       <DependentUpon>NavbarAndSidebar.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="NavbarAndSidebar.Master.designer.cs">
       <DependentUpon>NavbarAndSidebar.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AccountingList.aspx.cs">
+      <DependentUpon>AccountingList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AccountingList.aspx.designer.cs">
+      <DependentUpon>AccountingList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -164,6 +179,7 @@
     <Content Include="bootstrap-5.1.1-dist\js\bootstrap.js.map" />
     <Content Include="bootstrap-5.1.1-dist\js\bootstrap.min.js.map" />
     <Content Include="HttpHandlers\IndexHandler.ashx" />
+    <Content Include="HttpHandlers\LoginHandler.ashx" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
