@@ -108,6 +108,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBConnect\AccountingListDBMethod.cs" />
     <Compile Include="DBConnect\AccountManager.cs" />
     <Compile Include="DBConnect\IndexDBMethod.cs" />
     <Compile Include="Global.asax.cs">
@@ -115,12 +116,16 @@
     </Compile>
     <Compile Include="Helpers\DBHelper.cs" />
     <Compile Include="Helpers\LoginHelper.cs" />
+    <Compile Include="HttpHandlers\AccountingListHandler.ashx.cs">
+      <DependentUpon>AccountingListHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="HttpHandlers\IndexHandler.ashx.cs">
       <DependentUpon>IndexHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="HttpHandlers\LoginHandler.ashx.cs">
       <DependentUpon>LoginHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountingListModel.cs" />
     <Compile Include="Models\IndexModel.cs" />
     <Compile Include="Models\LoginInfoModel.cs" />
     <Compile Include="Models\UserListModel.cs" />
@@ -180,6 +185,7 @@
     <Content Include="bootstrap-5.1.1-dist\js\bootstrap.min.js.map" />
     <Content Include="HttpHandlers\IndexHandler.ashx" />
     <Content Include="HttpHandlers\LoginHandler.ashx" />
+    <Content Include="HttpHandlers\AccountingListHandler.ashx" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
