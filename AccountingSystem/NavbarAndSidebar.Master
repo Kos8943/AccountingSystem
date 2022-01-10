@@ -74,8 +74,8 @@
                         </a>
                         <div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="AccountList">流水帳管理</a>
-                                <a class="nav-link" href="CategoryList">流水帳分類管理</a>
+                                <a class="nav-link" href="AccountingList.aspx">流水帳管理</a>
+                                <a class="nav-link" href="CategoryList.aspx">流水帳分類管理</a>
                             </nav>
                         </div>
 
