@@ -106,6 +106,7 @@
     <Content Include="Pages\CategoryList.aspx" />
     <Content Include="Pages\Index.aspx" />
     <Content Include="Pages\Login.aspx" />
+    <Content Include="Pages\UserList.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +114,7 @@
     <Compile Include="DBConnect\AccountManager.cs" />
     <Compile Include="DBConnect\CategoryDBMethod.cs" />
     <Compile Include="DBConnect\IndexDBMethod.cs" />
+    <Compile Include="DBConnect\UserListDBMethod.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -129,6 +131,9 @@
     </Compile>
     <Compile Include="HttpHandlers\LoginHandler.ashx.cs">
       <DependentUpon>LoginHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="HttpHandlers\UserListHandler.ashx.cs">
+      <DependentUpon>UserListHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountingListModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
@@ -170,6 +175,13 @@
     <Compile Include="Pages\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UserList.aspx.cs">
+      <DependentUpon>UserList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\UserList.aspx.designer.cs">
+      <DependentUpon>UserList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +212,7 @@
     <Content Include="HttpHandlers\LoginHandler.ashx" />
     <Content Include="HttpHandlers\AccountingListHandler.ashx" />
     <Content Include="HttpHandlers\CategoryListHandler.ashx" />
+    <Content Include="HttpHandlers\UserListHandler.ashx" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
