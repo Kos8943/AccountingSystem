@@ -14,7 +14,7 @@
                     <h2>會員管理</h2>
                     <a href="#">管理者後台</a> <span>>會員管理</span>
                     <div>
-                        <a href="UserDetail" class="m-3 btn btn-primary">Add</a>
+                        <a href="UserDetail.aspx" class="m-3 btn btn-primary">Add</a>
                         <div id="btnDel" class="m-3 btn btn-danger">Del</div>
                     </div>
 
@@ -44,7 +44,7 @@
                                                 <td><%# Eval("Email") %></td>
                                                 <td><%# (Eval("Account_Level").ToString() == "1" ? "管理者" : "一般會員") %></td>
                                                 <td><%# Eval("Create_Time") %></td>
-                                                <td><a>Edit</a></td>
+                                                <td><a href="UserDetail.aspx?UserSid=<%# Eval("User_Sid") %>">Edit</a></td>
                                             </tr>
                                         </ItemTemplate>
 

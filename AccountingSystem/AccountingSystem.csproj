@@ -102,10 +102,12 @@
     <Content Include="Jquery\jquery-3.6.0.min.js" />
     <Content Include="js\datatables-simple-demo.js" />
     <Content Include="js\scripts.js" />
+    <Content Include="Pages\AccountingDetail.aspx" />
     <Content Include="Pages\AccountingList.aspx" />
     <Content Include="Pages\CategoryList.aspx" />
     <Content Include="Pages\Index.aspx" />
     <Content Include="Pages\Login.aspx" />
+    <Content Include="Pages\UserDetail.aspx" />
     <Content Include="Pages\UserList.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -114,6 +116,7 @@
     <Compile Include="DBConnect\AccountManager.cs" />
     <Compile Include="DBConnect\CategoryDBMethod.cs" />
     <Compile Include="DBConnect\IndexDBMethod.cs" />
+    <Compile Include="DBConnect\UserDetailDBMethod.cs" />
     <Compile Include="DBConnect\UserListDBMethod.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -132,6 +135,9 @@
     <Compile Include="HttpHandlers\LoginHandler.ashx.cs">
       <DependentUpon>LoginHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="HttpHandlers\UserDetailHandler.ashx.cs">
+      <DependentUpon>UserDetailHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="HttpHandlers\UserListHandler.ashx.cs">
       <DependentUpon>UserListHandler.ashx</DependentUpon>
     </Compile>
@@ -146,6 +152,13 @@
     </Compile>
     <Compile Include="NavbarAndSidebar.Master.designer.cs">
       <DependentUpon>NavbarAndSidebar.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AccountingDetail.aspx.cs">
+      <DependentUpon>AccountingDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AccountingDetail.aspx.designer.cs">
+      <DependentUpon>AccountingDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\AccountingList.aspx.cs">
       <DependentUpon>AccountingList.aspx</DependentUpon>
@@ -174,6 +187,13 @@
     </Compile>
     <Compile Include="Pages\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserDetail.aspx.cs">
+      <DependentUpon>UserDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\UserDetail.aspx.designer.cs">
+      <DependentUpon>UserDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\UserList.aspx.cs">
       <DependentUpon>UserList.aspx</DependentUpon>
@@ -213,6 +233,7 @@
     <Content Include="HttpHandlers\AccountingListHandler.ashx" />
     <Content Include="HttpHandlers\CategoryListHandler.ashx" />
     <Content Include="HttpHandlers\UserListHandler.ashx" />
+    <Content Include="HttpHandlers\UserDetailHandler.ashx" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
