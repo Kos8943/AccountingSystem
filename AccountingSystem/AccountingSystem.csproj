@@ -104,6 +104,7 @@
     <Content Include="js\scripts.js" />
     <Content Include="Pages\AccountingDetail.aspx" />
     <Content Include="Pages\AccountingList.aspx" />
+    <Content Include="Pages\CategoryDetail.aspx" />
     <Content Include="Pages\CategoryList.aspx" />
     <Content Include="Pages\Index.aspx" />
     <Content Include="Pages\Login.aspx" />
@@ -115,6 +116,7 @@
     <Compile Include="DBConnect\AccountingListDBMethod.cs" />
     <Compile Include="DBConnect\AccountManager.cs" />
     <Compile Include="DBConnect\CategoryDBMethod.cs" />
+    <Compile Include="DBConnect\CategoryDetailDBMethod.cs" />
     <Compile Include="DBConnect\IndexDBMethod.cs" />
     <Compile Include="DBConnect\UserDetailDBMethod.cs" />
     <Compile Include="DBConnect\UserListDBMethod.cs" />
@@ -125,6 +127,9 @@
     <Compile Include="Helpers\LoginHelper.cs" />
     <Compile Include="HttpHandlers\AccountingListHandler.ashx.cs">
       <DependentUpon>AccountingListHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="HttpHandlers\CategoryDetailHandler.ashx.cs">
+      <DependentUpon>CategoryDetailHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="HttpHandlers\CategoryListHandler.ashx.cs">
       <DependentUpon>CategoryListHandler.ashx</DependentUpon>
@@ -166,6 +171,13 @@
     </Compile>
     <Compile Include="Pages\AccountingList.aspx.designer.cs">
       <DependentUpon>AccountingList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CategoryDetail.aspx.cs">
+      <DependentUpon>CategoryDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CategoryDetail.aspx.designer.cs">
+      <DependentUpon>CategoryDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\CategoryList.aspx.cs">
       <DependentUpon>CategoryList.aspx</DependentUpon>
@@ -234,6 +246,7 @@
     <Content Include="HttpHandlers\CategoryListHandler.ashx" />
     <Content Include="HttpHandlers\UserListHandler.ashx" />
     <Content Include="HttpHandlers\UserDetailHandler.ashx" />
+    <Content Include="HttpHandlers\CategoryDetailHandler.ashx" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

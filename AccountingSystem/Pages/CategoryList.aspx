@@ -13,7 +13,7 @@
                     <h2>流水帳管理</h2>
                     <a href="#">流水帳紀錄</a> <span>>流水帳分類管理</span>
                     <div>
-                        <a href="CategoryDetail" class="m-3 btn btn-primary">Add</a>
+                        <a href="CategoryDetail.aspx" class="m-3 btn btn-primary">Add</a>
                         <div id="btnDel" class="m-3 btn btn-danger">Del</div>
                     </div>
 
@@ -38,7 +38,7 @@
                                                 <td><%# Eval("Create_Time") %></td>
                                                 <td><%# Eval("Category_Name") %></td>
                                                 <td><%# Eval("Has_Accounting") %></td>
-                                                <td><a>Edit</a></td>
+                                                <td><a href="CategoryDetail.aspx?CategorySid=<%# Eval("Category_Sid") %>">Edit</a></td>
                                             </tr>
                                         </ItemTemplate>
                                     </asp:Repeater>

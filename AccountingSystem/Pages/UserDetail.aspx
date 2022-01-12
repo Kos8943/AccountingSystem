@@ -207,29 +207,51 @@
         });
 
 
+        function checkAccountRepetition(account) {
 
+            var instance;
+
+            $.ajax({
+                type: "POST",
+                cache: false,
+                data: { Action: "CheckAccountRepetition", Account: account },
+                async: false,
+                url: "../HttpHandlers/UserDetailHandler.ashx",
+                success: function (res) {
+
+                    if (res == "success")
+                        instance = true;
+                    else
+                        instance = false;
+                }
+            });
+            return instance;
+        }
 
         function isEmail(email) {
             var EmailRegex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
             return EmailRegex.test(email);
         }
 
-        function checkAccountRepetition(account) {
+        //function checkAccountRepetition(account) {
 
-            $.ajax({
-                method: "POST",
-                url: "../HttpHandlers/UserDetailHandler.ashx",
-                data: { Action: "CheckAccountRepetition", Account: account }
-            })
-                .done(function (data) {
+        //    $.ajax({
+        //        method: "POST",
+        //        url: "../HttpHandlers/UserDetailHandler.ashx",
+        //        data: { Action: "CheckAccountRepetition", Account: account }
+        //    })
+        //        .done(function (data) {
 
-                    console.log(data)
-                    if (data == "success") {
-                        return true
-                    } else {
-                        return false
-                    }
-                });
-        }
+        //            console.log(data)
+        //            if (data == "success") {
+        //                return true
+        //            } else {
+        //                return false
+        //            }
+        //        });
+        //}
+
+
+        
     </script>
 </asp:Content>
