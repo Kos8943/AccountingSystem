@@ -110,6 +110,7 @@
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\UserDetail.aspx" />
     <Content Include="Pages\UserList.aspx" />
+    <Content Include="Pages\UserProfile.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -120,6 +121,7 @@
     <Compile Include="DBConnect\IndexDBMethod.cs" />
     <Compile Include="DBConnect\UserDetailDBMethod.cs" />
     <Compile Include="DBConnect\UserListDBMethod.cs" />
+    <Compile Include="DBConnect\UserProfileDBMethod.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -145,6 +147,9 @@
     </Compile>
     <Compile Include="HttpHandlers\UserListHandler.ashx.cs">
       <DependentUpon>UserListHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="HttpHandlers\UserProfileHandler.ashx.cs">
+      <DependentUpon>UserProfileHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountingListModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
@@ -214,6 +219,13 @@
     <Compile Include="Pages\UserList.aspx.designer.cs">
       <DependentUpon>UserList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UserProfile.aspx.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\UserProfile.aspx.designer.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -247,6 +259,7 @@
     <Content Include="HttpHandlers\UserListHandler.ashx" />
     <Content Include="HttpHandlers\UserDetailHandler.ashx" />
     <Content Include="HttpHandlers\CategoryDetailHandler.ashx" />
+    <Content Include="HttpHandlers\UserProfileHandler.ashx" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

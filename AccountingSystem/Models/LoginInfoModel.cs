@@ -12,5 +12,9 @@ namespace AccountingSystem.Models
         public string User_Name { get; set; }
 
         public int Account_Level { get; set; }
+
+        public string Account { get; set; }
+
+        public string Email { get; set; }
     }
 }

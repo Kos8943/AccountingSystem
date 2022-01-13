@@ -19,7 +19,8 @@ namespace AccountingSystem.DBConnect
 	                    Account, 
 	                    UserList.Password, 
 	                    Account_Level, 
-	                    UserList.User_Name 
+	                    UserList.User_Name,
+                        Email
                     From UserList
                     Where Account = @Account And Is_Delete = 'false'
                 ";
@@ -60,6 +61,11 @@ namespace AccountingSystem.DBConnect
                 if (!Convert.IsDBNull(dt.Rows[0]["User_Name"]))
                 {
                     model.User_Name = (string)dt.Rows[0]["User_Name"];
+                }
+
+                if (!Convert.IsDBNull(dt.Rows[0]["Email"]))
+                {
+                    model.Email = (string)dt.Rows[0]["Email"];
                 }
             }
             return model;

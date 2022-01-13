@@ -24,9 +24,6 @@ namespace AccountingSystem.Helpers
         }
 
 
-
-
-
         /// <summary> 嘗試登入 </summary>
         /// <param name="account"></param>
         /// <param name="pwd"></param>
@@ -50,7 +47,9 @@ namespace AccountingSystem.Helpers
             {
                 UserSid = model.UserSid,
                 User_Name = model.User_Name,
-                Account_Level = model.Account_Level
+                Account_Level = model.Account_Level,
+                Email = model.Email,
+                Account = model.Account
             };
 
             return true;
