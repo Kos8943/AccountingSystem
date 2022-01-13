@@ -99,6 +99,10 @@
         const url = new URL(window.location.href)
         const userSid = url.searchParams.get('UserSid')
 
+        if (isNaN(userSid)) {
+            window.location.href = "UserDetail.aspx"
+        }
+
         window.onload = function () {
 
             if (userSid == null)

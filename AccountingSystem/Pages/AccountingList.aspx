@@ -17,7 +17,7 @@
                     <h2>流水帳管理</h2>
                     <a href="#">流水帳紀錄</a> <span>>流水帳管理</span>
                     <div>
-                        <a href="AccountDetail" class="m-3 btn btn-primary">Add</a>
+                        <a href="AccountingDetail.aspx" class="m-3 btn btn-primary">Add</a>
                         <div class="m-3 btn btn-danger" id="btnDel">Del</div>
 
                         <%--<span class="m-3">小計490元</span>--%>
@@ -50,7 +50,7 @@
                                                 <td><%# (Eval("Price_Type").ToString() == "0") ? "收入" : "支出" %></td>
                                                 <td class="<%# (Eval("Price_Type").ToString() == "0") ? "" : "priceTypeColor" %>"><%# Eval("Price") %></td>
                                                 <td><%# Eval("Tittle") %></td>
-                                                <td><a href="<%# Eval("Account_Sid") %>">Edit</a></td>
+                                                <td><a href="AccountingDetail.aspx?AccountSid=<%# Eval("Account_Sid") %>">Edit</a></td>
                                             </tr>
                                         </ItemTemplate>
                                     </asp:Repeater>
