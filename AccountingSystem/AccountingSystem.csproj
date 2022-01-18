@@ -114,6 +114,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBConnect\AccountingDetailDBMethod.cs" />
     <Compile Include="DBConnect\AccountingListDBMethod.cs" />
     <Compile Include="DBConnect\AccountManager.cs" />
     <Compile Include="DBConnect\CategoryDBMethod.cs" />
@@ -127,6 +128,9 @@
     </Compile>
     <Compile Include="Helpers\DBHelper.cs" />
     <Compile Include="Helpers\LoginHelper.cs" />
+    <Compile Include="HttpHandlers\AccountingDetailHandler.ashx.cs">
+      <DependentUpon>AccountingDetailHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="HttpHandlers\AccountingListHandler.ashx.cs">
       <DependentUpon>AccountingListHandler.ashx</DependentUpon>
     </Compile>
@@ -260,6 +264,7 @@
     <Content Include="HttpHandlers\UserDetailHandler.ashx" />
     <Content Include="HttpHandlers\CategoryDetailHandler.ashx" />
     <Content Include="HttpHandlers\UserProfileHandler.ashx" />
+    <Content Include="HttpHandlers\AccountingDetailHandler.ashx" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
