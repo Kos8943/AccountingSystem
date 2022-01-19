@@ -10,9 +10,10 @@ namespace AccountingSystem.DBConnect
 {
     public class IndexDBMethod : DBHelper
     {
+        /// <summary>取得資料庫的總資料筆數、第一筆記帳時間、最後一筆記帳時間</summary>
         public DataTable GetAccountingInfo()
         {
-            //使用的SQL語法
+            //宣告資料庫查詢字串
             string queryString = $@"Select 
                                         Count(a.Account_Sid) As TotalAccounting, 
                                         convert(varchar, a.FirstDate, 120) As FirstDate,
@@ -30,24 +31,27 @@ namespace AccountingSystem.DBConnect
 
             List<SqlParameter> parameters = new List<SqlParameter>() { };
 
-
+            //使用DBHelper的GetDataTable取得資料列表
             var dt = this.GetDataTable(queryString, parameters);
 
+            //回傳資料列表
             return dt;
 
 
         }
 
+        /// <summary>取得資料庫的使用者帳號數量</summary>
         public DataTable GetTotalUser()
         {
-
+            //宣告資料庫查詢字串
             string queryString = $@"Select Count(User_Sid) As TotalUser From UserList Where Is_Delete = 'false'";
 
             List<SqlParameter> parameters = new List<SqlParameter>() { };
 
-
+            //使用DBHelper的GetDataTable取得資料列表
             var dt = this.GetDataTable(queryString, parameters);
 
+            //回傳資料列表
             return dt;
         }
     }
