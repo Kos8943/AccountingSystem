@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AccountingSystem.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,17 @@ namespace AccountingSystem
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           
+            if (!LoginHelper.HasLogined())
+            {
+                Response.Redirect("Login.aspx");
+            }
+            
+            if(LoginHelper.GetCurrentUserInfo().UserSid != 1)
+            {
+                this.adminOnly.Visible = false;
+            }
+            
         }
     }
 }

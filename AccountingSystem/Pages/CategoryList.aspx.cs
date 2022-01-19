@@ -18,6 +18,13 @@ namespace AccountingSystem.Pages
 
             if (!IsPostBack)
             {
+                
+
+                if (LoginHelper.GetCurrentUserInfo() == null)
+                {
+                    return;
+                }
+
                 CategoryDBMethod method = new CategoryDBMethod();
                 LoginInfoModel sessionInfo = LoginHelper.GetCurrentUserInfo();
 

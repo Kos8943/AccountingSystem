@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AccountingSystem.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,10 @@ namespace AccountingSystem.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (LoginHelper.HasLogined())
+            {
+                Response.Redirect("AccountList.aspx");
+            }
         }
     }
 }

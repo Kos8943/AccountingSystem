@@ -52,7 +52,7 @@
                     <label class="mt-3 mr-3" for="inputPassword">PWD</label>
                     &nbsp;
 					<div class="form-floating mb-3">
-                        <input class="form-control" id="inputPassword" name="password" autocomplete="off" />
+                        <input class="form-control" type="password" id="inputPassword" name="password" autocomplete="off" />
                     </div>
                 </div>
 

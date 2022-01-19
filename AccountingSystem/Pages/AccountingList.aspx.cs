@@ -17,10 +17,16 @@ namespace AccountingSystem.Pages
         {
             if (!IsPostBack)
             {
-                
+                               
+                if(LoginHelper.GetCurrentUserInfo() == null)
+                {
+                    return;
+                }
+
                 AccountingListDBMethod dBMethod = new AccountingListDBMethod();
                 LoginInfoModel sessionInfo = LoginHelper.GetCurrentUserInfo();
                 DataTable dt = dBMethod.GetAccountingList(sessionInfo.UserSid);
+
                 this.AccountingListRepeater.DataSource = dt;
                 this.AccountingListRepeater.DataBind();
 

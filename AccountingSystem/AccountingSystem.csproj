@@ -108,6 +108,7 @@
     <Content Include="Pages\CategoryList.aspx" />
     <Content Include="Pages\Index.aspx" />
     <Content Include="Pages\Login.aspx" />
+    <Content Include="Pages\LoginOut.aspx" />
     <Content Include="Pages\UserDetail.aspx" />
     <Content Include="Pages\UserList.aspx" />
     <Content Include="Pages\UserProfile.aspx" />
@@ -208,6 +209,13 @@
     </Compile>
     <Compile Include="Pages\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LoginOut.aspx.cs">
+      <DependentUpon>LoginOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\LoginOut.aspx.designer.cs">
+      <DependentUpon>LoginOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\UserDetail.aspx.cs">
       <DependentUpon>UserDetail.aspx</DependentUpon>

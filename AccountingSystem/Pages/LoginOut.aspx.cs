@@ -8,14 +8,12 @@ using System.Web.UI.WebControls;
 
 namespace AccountingSystem.Pages
 {
-    public partial class UserDetail : System.Web.UI.Page
+    public partial class LoginOut : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (LoginHelper.GetCurrentUserInfo().UserSid != 1)
-            {
-                Response.Redirect("AccountingList.aspx");
-            }
+            LoginHelper.Logout();
+            Response.Redirect("Login.aspx");
         }
     }
 }

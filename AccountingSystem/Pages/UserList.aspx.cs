@@ -18,6 +18,15 @@ namespace AccountingSystem.Pages
 
             if (!IsPostBack)
             {
+                
+                if (LoginHelper.GetCurrentUserInfo() == null)
+                {
+                    return;
+                }else if(LoginHelper.GetCurrentUserInfo().UserSid != 1)
+                {
+                    Response.Redirect("AccountingList.aspx");
+                }
+
                 UserListDBMethod method = new UserListDBMethod();
                 LoginInfoModel sessionInfo = LoginHelper.GetCurrentUserInfo();
 
