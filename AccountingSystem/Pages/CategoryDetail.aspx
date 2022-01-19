@@ -72,14 +72,18 @@
 
     <script>
 
-        const url = new URL(window.location.href)
-        const categorySid = url.searchParams.get('CategorySid')
+        const url = new URL(window.location.href)//取得當下網址
+        const categorySid = url.searchParams.get('CategorySid')//取得QueryString的CategorySid值
 
+        //當網頁讀取完後的事件
         window.onload = function () {
 
+            //categorySid為null判斷為新增模式並停止函式,否則維修改模式
             if (categorySid == null)
                 return
 
+            //修改模式則發送ajax至CategoryDetailHandler
+            //並將回傳的結果顯示在畫面上
             $.ajax({
                 method: "GET",
                 url: "../HttpHandlers/CategoryDetailHandler.ashx",
@@ -92,13 +96,17 @@
                 });
         }
 
+        //btnSubmit按鈕的點擊事件
         $("#btnSubmit").click(function () {
 
+            //宣告布林值,用來判斷是否可以發送ajax
             let conSubmit = true;
 
-            let categoryName = $("#inputTittle").val().trim()
-            let description = $("#inputMark").val()
+            
+            let categoryName = $("#inputTittle").val().trim()//取得分類標題欄位的值
+            let description = $("#inputMark").val()//取得分類備註的值
 
+            //檢查分類標題事後為空值或重複,是的話提示錯誤訊息,並將conSubmit改為false
             if (categoryName == "") {
                 $("#categoryNameMsg").text("請輸入標題")
                 conSubmit = false
@@ -107,8 +115,10 @@
                 conSubmit = false
             }
 
+            //conSubmit為true發送ajax
             if (conSubmit) {
 
+                //categorySid為null判斷為新增模式,否為修改模式
                 if (categorySid == null) {
 
                     $.ajax({
@@ -147,6 +157,7 @@
             }
         });
 
+        //發送ajax至CategoryDetailHandler,檢查分類標題是否重複重複回傳false
         function checkCategoryRepetition(categoryName) {
 
             var instance;

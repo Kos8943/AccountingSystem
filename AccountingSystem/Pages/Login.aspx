@@ -66,17 +66,19 @@
     </form>
 
     <script>
-
+        //btnSubmit按鈕的點擊事件
         $("#btnSubmit").click(function () {
 
-            let account = document.getElementById("inputAccount")
-            let password = document.getElementById("inputPassword")
+            let account = document.getElementById("inputAccount")//取得帳號欄位的值
+            let password = document.getElementById("inputPassword")//取得密碼欄位的值
 
+            //檢查帳號及密碼欄位是否為空值,是的話提示錯誤訊息,並中止函式
             if (account.value.trim() == "" || password.value.trim() == "") {
                 $("#loginMsg").text("請輸入帳號密碼")
                 return
             }
 
+            //發送ajax至LoginHandler
             $.ajax({
                 method: "POST",
                 url: "../HttpHandlers/LoginHandler.ashx",

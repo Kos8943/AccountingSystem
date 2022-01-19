@@ -58,6 +58,7 @@
 
     <script>
 
+        //畫面讀取完後發送ajax至IndexHandler,並將回傳值顯示於畫面上
         window.onload = function () {
 
             $.ajax({

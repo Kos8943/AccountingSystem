@@ -92,14 +92,18 @@
 
     <script>
 
-        const url = new URL(window.location.href)
-        const accountSid = url.searchParams.get('AccountSid')
+        const url = new URL(window.location.href)//取得當下網址
+        const accountSid = url.searchParams.get('AccountSid')//取得QueryString的AccountSid值
 
+        //當網頁讀取完後的事件
         window.onload = function () {
 
+            //accountSid為null判斷為新增模式並停止函式,否則維修改模式
             if (accountSid == null)
                 return
 
+            //修改模式則發送ajax至AccountingDetailHandler
+            //並將回傳的結果顯示在畫面上
             $.ajax({
                 method: "GET",
                 url: "../HttpHandlers/AccountingDetailHandler.ashx",
@@ -115,29 +119,35 @@
                 });
         }
 
+        //btnSubmit按鈕的點擊事件
         $("#btnSubmit").click(function () {
 
+            //宣告布林值,用來判斷是否可以發送ajax
             let conSubmit = true;
 
+            //取得記帳的各項輸入值
             let priceType = $("#priceType").val()
             let categorySid = $("#<%= CategoryDropDownList.ClientID %>").val()
             let price = $("#price").val()
             let tittle = $("#tittle").val()
             let description = $("#description").val()
 
-
+            //檢查price是否為空值,是的話回傳錯誤訊息,並將conSubmit設為否
             if (price == "") {
                 $("#priceSpan").text("請輸入金額")
                 conSubmit = false
             }
 
+            //檢查tittle是否為空值,是的話回傳錯誤訊息,並將conSubmit設為否
             if (tittle == "") {
                 $("#tittleSpan").text("請輸入標題")
                 conSubmit = false
             }
-            console.log(categorySid)
+
+            //conSubmit為true發送ajax
             if (conSubmit) {
 
+                //accountSid為null判斷為新增模式,否為修改模式
                 if (accountSid == null) {
 
                     $.ajax({
@@ -183,7 +193,7 @@
             }
         });
 
-
+        //檢查price欄位keypress事件的輸入值是否為數字
         document.querySelector("#price").addEventListener("keypress", function (evt) {
             if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {
                 evt.preventDefault();

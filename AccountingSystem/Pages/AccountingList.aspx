@@ -69,24 +69,27 @@
     </div>
 
     <script>
-        
+            //刪除按鈕的點擊事件
             $("#btnDel").click(function () {
 
+                //將有勾選的checkbox的值用陣列cbxVehicle來承接
                 var cbxVehicle = new Array();
                 $('input:checkbox:checked[name="Delete_Sid"]').each(function (i) { cbxVehicle[i] = this.value; });
 
-                console.log(cbxVehicle)
-
+                //cbxVehicle長度為0,提示錯誤訊息並終止函式
                 if (cbxVehicle.length == 0) {
                     $("#errMsg").text("請至少選擇一筆紀錄")
                     return
                 }
 
+                //確定使用者是否刪除資料
                 var yes = confirm('確定刪除以選取資料?');
 
+                //yes為false中止函式
                 if (!yes)
                     return
 
+                //發送ajax至AccountingListHandler,成功後重新載入畫面
                 $.ajax({
                     method: "POST",
                     url: "../HttpHandlers/AccountingListHandler.ashx",

@@ -96,18 +96,22 @@
 
     <script>
 
-        const url = new URL(window.location.href)
-        const userSid = url.searchParams.get('UserSid')
+        const url = new URL(window.location.href)//取得當下網址
+        const userSid = url.searchParams.get('UserSid')//取得QueryString的UserSid值
 
+        //userSid為空值則判斷為新增模式
         if (isNaN(userSid)) {
             window.location.href = "UserDetail.aspx"
         }
 
+        //畫面讀取完後的事件
         window.onload = function () {
 
+            //userSid為空值中止函式
             if (userSid == null)
                 return
 
+            //修改模式則發送ajax至UserDetailHandler,並將回傳值顯示於畫面上
             $.ajax({
                 method: "GET",
                 url: "../HttpHandlers/UserDetailHandler.ashx",
@@ -126,20 +130,23 @@
                 });
         }
 
+        //btnSubmit按鈕的點擊事件
         $("#btnSubmit").click(function () {
 
+            //宣告布林值,用來判斷是否可以發送ajax
             let conSubmit = true;
 
-            let userName = $("#userName").val().trim()
-            let email = $("#userEmail").val().trim()
-            let accountLevel = $("#userAccountLevel").val()
+            let userName = $("#userName").val().trim()//取得姓名欄位的值
+            let email = $("#userEmail").val().trim()//取得信箱欄位的值
+            let accountLevel = $("#userAccountLevel").val()//取得帳號等級下拉選單的值
             
-
+            //檢查姓名是否為空值,是的話提示錯誤訊息,並將conSubmit改為false
             if (userName == "") {
                 $("#userNameSpan").text("請輸入姓名")
                 conSubmit = false
             }
 
+            //檢查信箱欄位是否為空值及是否符合格式,是的話提示錯誤訊息並將canSubmit改為false
             if (email == "") {
                 $("#emailSpan").text("請輸入信箱")
                 conSubmit = false
@@ -148,13 +155,15 @@
                 conSubmit = false
             }
 
-
+            //conSubmit為true發送ajax
             if (conSubmit) {
 
+                //userSid為null判斷為新增模式,否為修改模式
                 if (userSid == null) {
 
-                    let account = $("#userAccount").val().trim()
+                    let account = $("#userAccount").val().trim()//取得帳號欄位的值
 
+                    //檢查帳號是否為空值以及是否重複,是的話提示錯誤訊息,並中止函式
                     if (account == "") {
 
                         $("#userAccountSpan").text("請輸入帳號")

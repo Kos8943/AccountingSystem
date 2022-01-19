@@ -80,6 +80,7 @@
 
 	<script>
 
+		//當網頁讀取完後,發送ajax至UserProfileHandler,並將回傳值顯示在畫面
         window.onload = function () {
 
             $.ajax({
@@ -88,7 +89,6 @@
                 data: { Action: "GetCurrentUserInfo"}
             })
 				.done(function (data) {
-                    console.log(data)
                     $("#userAccount").val(data['Account'])
                     $("#UserName").val(data['User_Name'])
                     $("#UserEmail").val(data['Email'])
@@ -96,19 +96,22 @@
                 });
 		}
 
-
+		//btnSubmit按鈕的點擊事件
         $("#btnSubmit").click(function () {
 
+			//宣告布林值,用來判斷是否可以發送ajax
 			let canSubmit = true
 
-			let userName = $("#UserName").val().trim()
-			let userEmail = $("#UserEmail").val().trim()
+			let userName = $("#UserName").val().trim()//取得使用者名稱欄位的值
+            let userEmail = $("#UserEmail").val().trim()//取得信箱欄位的值
 
+			//檢查姓名欄位是否為空值,是的話提示錯誤訊息並將canSubmit改為false
 			if (userName == "") {
 				$("#userNameMsg").text("請輸入姓名")
 				canSubmit = false
 			}
 
+			//檢查信箱欄位是否為空值及是否符合格式,是的話提示錯誤訊息並將canSubmit改為false
 			if (userEmail == "") {
 				$("#userEmailMsg").text("請輸入信箱")
 				canSubmit = false
@@ -117,6 +120,7 @@
                 canSubmit = false
 			}
 
+			//conSubmit為true發送ajax至UserProfileHandler
 			if (canSubmit) {
 
                 $.ajax({
@@ -139,6 +143,7 @@
             }
 		});
 
+		//檢查信箱格式是否正確
         function isEmail(email) {
             var EmailRegex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
             return EmailRegex.test(email);
