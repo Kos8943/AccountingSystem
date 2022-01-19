@@ -14,17 +14,21 @@ namespace AccountingSystem.HttpHandlers
 
         public void ProcessRequest(HttpContext context)
         {
+            //將FormData的Delete_Sid值用Split切割成陣列
             var deleteSid = context.Request.Form["Delete_Sid[]"].Split(',');
 
-            if(deleteSid.Length > 0)
+            //deleteSid長度大於0
+            if (deleteSid.Length > 0)
             {
                 UserListDBMethod method = new UserListDBMethod();
 
+                //使用foreach逐筆刪除使用者帳號
                 foreach (var sid in deleteSid)
                 {
                     method.DeleteUser(sid);
                 }
 
+                //回傳成功字串
                 context.Response.ContentType = "text/plain";
                 context.Response.Write("success");
             }

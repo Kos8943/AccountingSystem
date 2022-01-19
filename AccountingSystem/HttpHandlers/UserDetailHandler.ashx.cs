@@ -18,12 +18,13 @@ namespace AccountingSystem.HttpHandlers
 
         public void ProcessRequest(HttpContext context)
         {
+            //-----Method:GET-----
 
-            string quertStringAction = context.Request.QueryString["Action"];
-            string quertStringUserSid = context.Request.QueryString["UserSid"];
-            string formDataAction = context.Request.Form["Action"];
+            string quertStringAction = context.Request.QueryString["Action"];//取得QueryString的Action值
+            string quertStringUserSid = context.Request.QueryString["UserSid"];//取得QueryString的Action值
 
-            if(quertStringAction == "GetUserInfo")
+
+            if (quertStringAction == "GetUserInfo")
             {             
                 string jsonString = GetUserInfo(quertStringUserSid);
 
@@ -32,14 +33,26 @@ namespace AccountingSystem.HttpHandlers
                     context.Response.ContentType = "application/json";
                     context.Response.Write(jsonString);
                 }
-                
+                return;
             }
-            else if (formDataAction == "CheckAccountRepetition")
+
+            //---------------------
+
+
+            //-----Method:POST-----
+            string formDataAction = context.Request.Form["Action"];//取得FormData的Action值
+
+            //判斷formDataAction
+            //檢查帳號是否重複 : "CheckAccountRepetition"
+            //新增帳號 : "Insert"
+            //修改帳號 : "Update"
+            if (formDataAction == "CheckAccountRepetition")
             {
-                string formDataAccount = context.Request.Form["Account"];
+                string formDataAccount = context.Request.Form["Account"];//取得FormData的Account值
 
                 UserDetailDBMethod method = new UserDetailDBMethod();
 
+                //CheckAccountRepetition回傳true則無帳號重複，false則帳號重複
                 if (method.CheckAccountRepetition(formDataAccount))
                 {
                     context.Response.ContentType = "text/plain";
@@ -55,26 +68,26 @@ namespace AccountingSystem.HttpHandlers
             else if(formDataAction == "Insert")
             {
                 UserDetailDBMethod method = new UserDetailDBMethod();
-                UserListModel model = GetFormDateUserInfo("Insert", context);
+                UserListModel model = GetFormDateUserInfo("Insert", context);//取得FormData的值
 
+                //新增使用者資訊並回傳成功字串
                 method.InsertUser(model);
-
                 context.Response.ContentType = "text/plain";
                 context.Response.Write("success");
             }
             else if(formDataAction == "Update")
             {
                 UserDetailDBMethod method = new UserDetailDBMethod();
-                UserListModel model = GetFormDateUserInfo("Update", context);
+                UserListModel model = GetFormDateUserInfo("Update", context);//取得FormData的值
 
+                //修改使用者資訊並回傳成功字串
                 method.UpdateUser(model);
-
                 context.Response.ContentType = "text/plain";
                 context.Response.Write("success");
             }
 
-            //context.Response.ContentType = "text/plain";
-            //context.Response.Write("Hello World");
+            //---------------------
+
         }
 
         public bool IsReusable
@@ -85,16 +98,18 @@ namespace AccountingSystem.HttpHandlers
             }
         }
 
+        /// <summary>以UserSid為參數，取得使用者資訊</summary>
         private string GetUserInfo(string UserSid)
         {
-
+            //取得帳號資訊
             UserDetailDBMethod method = new UserDetailDBMethod();
             DataTable dt = method.GetUserInfo(UserSid);
 
-
+            //dt長度為0則回傳空值
             if (dt.Rows.Count == 0)
                 return null;
 
+            //用model承接dt的資料
             UserListModel model = new UserListModel();
 
             model.UserSid = (int)dt.Rows[0]["User_Sid"];
@@ -106,13 +121,15 @@ namespace AccountingSystem.HttpHandlers
             model.Create_Time = dt.Rows[0]["Create_Time"].ToString();
             model.Modify_Time = dt.Rows[0]["Modify_Time"].ToString();
 
+            //將model轉成JSON字串並回傳
             string jsonString = JsonConvert.SerializeObject(model);
-
             return jsonString;
         }
 
+        /// <summary>取得FormData的值，並用UserListModel承接後回傳</summary>
         private UserListModel GetFormDateUserInfo(string action, HttpContext context)
         {
+            //使用UserListModel來承接FormData的值
             UserListModel model = new UserListModel();
 
             model.User_Name = context.Request.Form["UserName"];
@@ -120,18 +137,21 @@ namespace AccountingSystem.HttpHandlers
             model.Account_Level = Convert.ToInt32(context.Request.Form["AccountLevel"]);
             model.Account = context.Request.Form["Account"];
 
+            //檢查action
+            //新增使用者 : "Insert"
+            //修改使用者 : "Update"
             if (action == "Insert")
             {               
-                model.Create_Time = DateTime.Now.ToString();
-                model.Modify_Time = DateTime.Now.ToString();
-            }else if(action == "Update")
-            {
-                
-                model.UserSid = Convert.ToInt32(context.Request.Form["UserSid"]);
-                model.Modify_Time = DateTime.Now.ToString();
+                model.Create_Time = DateTime.Now.ToString();//將建立時間設為當下
+                model.Modify_Time = DateTime.Now.ToString();//將修改時間設為當下
+            }
+            else if(action == "Update")
+            {            
+                model.UserSid = Convert.ToInt32(context.Request.Form["UserSid"]);//取得FormData的UserSid值
+                model.Modify_Time = DateTime.Now.ToString();//將修改時間設為當下
             }
 
-
+            //回傳model
             return model;
         }
     }

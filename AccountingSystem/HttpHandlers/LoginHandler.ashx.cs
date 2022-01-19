@@ -15,9 +15,10 @@ namespace AccountingSystem.HttpHandlers
 
         public void ProcessRequest(HttpContext context)
         {
-            string account = context.Request.Form["account"];
-            string password = context.Request.Form["password"];
+            string account = context.Request.Form["account"];//取得FormData的account值
+            string password = context.Request.Form["password"];//取得FormData的password值
 
+            //以account、password為參數，使用LoginHelper.TryLogin嘗試登入，登入成功則回傳true
             if (LoginHelper.TryLogin(account, password)) {
                 context.Response.ContentType = "text/plain";
                 context.Response.Write("success");

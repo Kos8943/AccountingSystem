@@ -22,24 +22,32 @@ namespace AccountingSystem.HttpHandlers
         }
         public void ProcessRequest(HttpContext context)
         {
+            //將FormData的Delete_Sid值用Split切割成陣列
             var deleteSid = context.Request.Form["Delete_Sid[]"].Split(',');
 
-            if(deleteSid.Length > 0)
+            //deleteSid長度大於0
+            if (deleteSid.Length > 0)
             {
-                CategoryDBMethod method = new CategoryDBMethod();
+
+                CategoryDBMethod method = new CategoryDBMethod();//建立CategoryDBMethod實例
+
 
                 foreach (var sid in deleteSid)
                 {
+                    //以CategorySid為參數查詢資料庫
                     DataTable dt = method.GetCategoryAccountingRecord(sid);
 
+                    //dt長度大於0，則判定為有相同分類存在
                     if (dt.Rows.Count > 0) 
                     {
+                        //建立Result實例，並將結果及錯誤訊息回傳
                         Result result = new Result()
                         {
                             result = "Fail",
                             message = $"請刪除{dt.Rows[0]["Category_Name"]}的記帳紀錄"
                         };
 
+                        //將result轉成JSON字串並回傳
                         string jsonString = JsonConvert.SerializeObject(result);
                         context.Response.ContentType = "application/json";
                         context.Response.Write(jsonString);                     
@@ -47,16 +55,19 @@ namespace AccountingSystem.HttpHandlers
                     }                      
                 }
 
+                //使用foreach逐筆刪除分類
                 foreach (var sid in deleteSid)
                 {
                     method.DeleteCategory(sid);
                 }
 
+                //建立Result實例，並將結果回傳
                 Result successResult = new Result()
                 {
                     result = "success"
                 };
 
+                //將result轉成JSON字串並回傳
                 string successJsonString = JsonConvert.SerializeObject(successResult);
                 context.Response.ContentType = "application/json";
                 context.Response.Write(successJsonString);
