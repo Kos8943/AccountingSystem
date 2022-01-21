@@ -15,27 +15,27 @@ namespace AccountingSystem.DBConnect
         {
 			//宣告資料庫查尋字串
 			string queryString = $@"Select 
-									a.Category_Sid,
-									a.User_List_User_Sid,
-									a.Create_Time,
-									a.Category_Name,
-									a.Description,
-									a.Has_Accounting from 
-										(
-											Select
-											Category_Sid, 
-											User_List_User_Sid,
-											convert(varchar, AccountCategoryList.Create_Time, 111) AS Create_Time, 
-											Category_Name, 
-											AccountCategoryList.Description, 
-											Count(Account_Sid) As Has_Accounting,
-											AccountCategoryList.Is_Delete
-											from AccountCategoryList 
-											Left Join AccountList On Category_Sid = AccountList.CategoryList_CategorySid 
-											Where User_List_User_Sid = @User_Sid And AccountCategoryList.Is_Delete = 'false' And AccountList.Is_Delete = 'false' Or AccountList.Is_Delete Is Null
-											Group By Category_Sid, User_List_User_Sid, AccountCategoryList.Create_Time, Category_Name, AccountCategoryList.Description, AccountCategoryList.Is_Delete
-										) a Where a.Is_Delete = 'false' 
-									Order By a.Create_Time Desc ;";
+										a.Category_Sid,
+										a.User_List_User_Sid,
+										a.Create_Time,
+										a.Category_Name,
+										a.Description,
+										a.Has_Accounting from 
+											(
+												Select
+												Category_Sid, 
+												User_List_User_Sid,
+												convert(varchar, AccountCategoryList.Create_Time, 111) AS Create_Time, 
+												Category_Name, 
+												AccountCategoryList.Description, 
+												Count(Account_Sid) As Has_Accounting,
+												AccountCategoryList.Is_Delete
+												from AccountCategoryList 
+												Left Join AccountList On Category_Sid = AccountList.CategoryList_CategorySid 
+												Where AccountCategoryList.Is_Delete = 'false' And AccountList.Is_Delete = 'false' Or							AccountList.Is_Delete Is   	Null
+												Group By Category_Sid, User_List_User_Sid, AccountCategoryList.Create_Time,		C	a	tegory_Name,						AccountCategoryList.Description,	A	ccoun	tCategoryList.Is_Delete
+											) a Where User_List_User_Sid = @User_Sid And a.Is_Delete = 'false' 
+										Order By a.Create_Time Desc ";
 
 			//使用List<SqlParameter>承接參數化查詢
 			List<SqlParameter> parameters = new List<SqlParameter>()
