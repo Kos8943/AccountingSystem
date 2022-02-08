@@ -32,8 +32,8 @@ namespace AccountingSystem.DBConnect
 												AccountCategoryList.Is_Delete
 												from AccountCategoryList 
 												Left Join AccountList On Category_Sid = AccountList.CategoryList_CategorySid 
-												Where AccountCategoryList.Is_Delete = 'false' And AccountList.Is_Delete = 'false' Or							AccountList.Is_Delete Is   	Null
-												Group By Category_Sid, User_List_User_Sid, AccountCategoryList.Create_Time,		C	a	tegory_Name,						AccountCategoryList.Description,	A	ccoun	tCategoryList.Is_Delete
+												Where AccountCategoryList.Is_Delete = 'false' And AccountList.Is_Delete = 'false' Or							AccountList.Is_Delete Is Null
+												Group By Category_Sid, User_List_User_Sid, AccountCategoryList.Create_Time,	Category_Name,						AccountCategoryList.Description, AccountCategoryList.Is_Delete
 											) a Where User_List_User_Sid = @User_Sid And a.Is_Delete = 'false' 
 										Order By a.Create_Time Desc ";
 
